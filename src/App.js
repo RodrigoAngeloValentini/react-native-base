@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   SafeAreaView,
@@ -15,6 +16,9 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = () => {
+function HomeScreen() {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -100,6 +104,18 @@ const App = () => {
         </ScrollView>
       </SafeAreaView>
     </>
+  );
+}
+
+const Stack = createStackNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
